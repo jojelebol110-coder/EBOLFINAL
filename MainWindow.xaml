@@ -1,0 +1,156 @@
+﻿<Window x:Class="EBOL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MY MEAL PLAN" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <!-- TITLE -->
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+               FontWeight="Bold"
+               HorizontalContentAlignment="Center"
+               FontSize="26"
+               Content="MY MEAL PLANNER">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF00D48B" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+
+        <Separator Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" />
+
+        <!-- DATA GRID -->
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <DataGrid x:Name="dataGrid"
+                      Height="300"
+                      AutoGenerateColumns="False"
+                      SelectionChanged="dataGrid_SelectionChanged">
+                <DataGrid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </DataGrid.Background>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="BREAKFAST" Binding="{Binding Breakfast}" />
+                    <DataGridTextColumn Header="LUNCH" Binding="{Binding Lunch}" />
+                    <DataGridTextColumn Header="DINNER" Binding="{Binding Dinner}" />
+                    <DataGridTextColumn Header="SNACKS" Binding="{Binding Snacks}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="btnDelete"
+                    Content="TRASH"
+                    Height="50"
+                    Margin="0,5"
+                    IsEnabled="False"
+                    Click="btnDelete_Click"
+                    Background="#FFED200B"/>
+        </StackPanel>
+
+        <!-- FORM -->
+        <Grid Grid.Row="3" Grid.Column="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF1C1C1C" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- FORM TITLE -->
+            <Label Grid.Row="0" Grid.Column="1"
+                   Content="MEAL PLAN"
+                   FontWeight="Bold"
+                   HorizontalContentAlignment="Center">
+                <Label.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Label.Background>
+            </Label>
+
+            <!-- BREAKFAST -->
+            <Label Grid.Row="2" Grid.Column="1" Content="BREAKFAST" Margin="0,0,0,11" Grid.RowSpan="2"/>
+            <TextBox x:Name="txtBreakfast"
+                     Grid.Row="3"
+                     Grid.Column="1" Margin="0,0,0,12"/>
+
+            <!-- LUNCH -->
+            <Label Grid.Row="3" Grid.Column="1" Content="LUNCH" Grid.ColumnSpan="2" Margin="8,22,2,0" Grid.RowSpan="3" RenderTransformOrigin="0.488,1.279" Height="38" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtLunch"
+                     Grid.Row="5"
+                     Grid.Column="1"/>
+
+            <!-- DINNER -->
+            <Label Grid.Row="6" Grid.Column="1" Content="DINNER"/>
+            <TextBox x:Name="txtDinner"
+                     Grid.Row="7"
+                     Grid.Column="1" Margin="0,0,0,12" Grid.RowSpan="2"/>
+
+            <!-- SNACKS -->
+            <Label Grid.Row="8" Grid.Column="1" Content="SNACKS" Margin="0,0,0,10" Grid.RowSpan="2"/>
+            <ComboBox x:Name="cmbSnacks"
+                      Grid.Row="9"
+                      Grid.Column="1">
+                <ComboBoxItem Content="JUICE WITH BREAD"/>
+                <ComboBoxItem Content="COFFEE WITH BREAD"/>
+                <ComboBoxItem Content="BURGER WITH COLA"/>
+                <ComboBoxItem Content="PIZZA WITH COLA"/>
+                <ComboBoxItem Content="MANG INASAL WITH COLA"/>
+            </ComboBox>
+
+            <!-- SAVE BUTTON -->
+            <Button x:Name="btnSave"
+                    Grid.Row="10"
+                    Grid.Column="1"
+                    Content="ADD MEAL"
+                    Height="40"
+                    Click="btnSave_Click" RenderTransformOrigin="0.496,1.342">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
